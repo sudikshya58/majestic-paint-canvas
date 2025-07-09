@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/vite-react-deploy/" : "/",
+  base: process.env.VITE_BASE_PATH || "/majestic-paint-canvas",
   server: {
     host: "::",
     port: 8081,
