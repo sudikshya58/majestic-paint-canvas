@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -29,13 +29,24 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    const SERVICE_ID = 'service_4esbn5p';
+    const TEMPLATE_ID = 'template_35531ds';
+    const USER_ID = 'urBUacrRotIJ4hlUE';
+
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message
+      }, USER_ID);
+
       toast({
         title: "Quote Request Sent!",
         description: "We'll get back to you within 24 hours with your free estimate.",
       });
-      
+
       setFormData({
         name: '',
         email: '',
@@ -43,8 +54,16 @@ const Contact = () => {
         service: '',
         message: ''
       });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast({
+        title: 'Error',
+        description: 'Failed to send your request. Please try again later.',
+        variant: 'destructive',
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const contactInfo = [
@@ -82,7 +101,7 @@ const Contact = () => {
             Get Your <span className="gradient-text">Free Quote</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to transform your space? Contact us today for a free, 
+            Ready to transform your space? Contact us today for a free,
             no-obligation estimate. We're here to bring your vision to life.
           </p>
         </div>
@@ -202,7 +221,7 @@ const Contact = () => {
             </form>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact Info */}
           <div className="animate-on-scroll">
             <div className="bg-light-grey rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
@@ -224,7 +243,6 @@ const Contact = () => {
                 ))}
               </div>
 
-              {/* Map Placeholder */}
               <div className="bg-gray-200 rounded-lg h-48 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-2" />

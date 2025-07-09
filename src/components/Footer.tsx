@@ -1,5 +1,6 @@
 
 import React from 'react';
+import logo from '../../src/image/logo.png'; // make sure path is correct
 import { Facebook, Instagram, Twitter, Linkedin, Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -19,8 +20,14 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-blue-gradient rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                  <div className="w-44 h-20 rounded-lg flex items-center justify-center">
+              <img
+                src={logo}
+                alt="Company Logo"
+                className="w-full h-auto object-contain drop-shadow-md"
+              />
+            </div>
               </div>
               <div>
                 <h3 className="text-xl font-bold">Majestic Painting</h3>

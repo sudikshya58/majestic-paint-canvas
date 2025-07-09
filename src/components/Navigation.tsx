@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '../../src/image/logo.png'; // make sure path is correct
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ const Navigation = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -35,28 +35,27 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 
+        ${
+          isScrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-lg'
+            : 'bg-white/80 backdrop-blur-sm shadow-sm'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-blue-gradient rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">M</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-navy-blue">
-                Majestic Painting
-              </h1>
-              <p className="text-sm text-gray-600">& Decoration</p>
+            <div className="w-44 h-20 rounded-lg flex items-center justify-center">
+              <img
+                src={logo}
+                alt="Company Logo"
+                className="w-full h-auto object-contain drop-shadow-md"
+              />
             </div>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
@@ -69,7 +68,7 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Contact Info & CTA */}
+          {/* Contact & CTA */}
           <div className="hidden lg:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Phone className="w-4 h-4" />
@@ -77,13 +76,13 @@ const Navigation = () => {
             </div>
             <Button
               onClick={() => scrollToSection('#contact')}
-              className="bg-blue-gradient hover:opacity-90 transition-opacity"
+              className="bg-blue-600 text-white hover:bg-blue-700"
             >
               Free Quote
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 rounded-md text-gray-700 hover:text-sky-blue"
@@ -92,7 +91,7 @@ const Navigation = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Nav */}
         {isOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t shadow-lg">
             <div className="px-4 py-6 space-y-4">
@@ -112,7 +111,7 @@ const Navigation = () => {
                 </div>
                 <Button
                   onClick={() => scrollToSection('#contact')}
-                  className="w-full bg-blue-gradient hover:opacity-90"
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700"
                 >
                   Get Free Quote
                 </Button>

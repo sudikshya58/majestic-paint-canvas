@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Shield, Users, Award, Clock } from 'lucide-react';
 
@@ -7,89 +6,64 @@ const About = () => {
     {
       icon: Shield,
       title: 'Licensed & Insured',
-      description: 'Fully licensed and insured for your peace of mind'
+      description: 'Peace of mind with full licensing and insurance.',
     },
     {
       icon: Users,
       title: 'Expert Team',
-      description: 'Skilled professionals with years of experience'
+      description: 'Experienced professionals dedicated to quality.',
     },
     {
       icon: Award,
       title: 'Quality Work',
-      description: 'Premium materials and exceptional craftsmanship'
+      description: 'Exceptional craftsmanship with premium materials.',
     },
     {
       icon: Clock,
       title: 'On-Time Delivery',
-      description: 'We respect your schedule and deliver on time'
-    }
+      description: 'Respecting your schedule, delivering on time.',
+    },
   ];
 
   return (
     <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="animate-on-scroll">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              About{' '}
-              <span className="gradient-text">Majestic Painting</span>
-            </h2>
-            
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              Majestic Painting and Decoration is known for precision, professionalism, 
-              and a splash of creativity. With over 10 years of experience in the industry, 
-              we've transformed hundreds of homes and businesses across the region.
-            </p>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Our commitment to excellence and attention to detail sets us apart. We use 
-              only premium materials and proven techniques to ensure your project not only 
-              looks beautiful but stands the test of time.
-            </p>
-
-            <div className="grid grid-cols-2 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-sky-blue mb-2">500+</div>
-                <div className="text-gray-600">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-sky-blue mb-2">10+</div>
-                <div className="text-gray-600">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-sky-blue mb-2">100%</div>
-                <div className="text-gray-600">Satisfaction Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-sky-blue mb-2">24/7</div>
-                <div className="text-gray-600">Customer Support</div>
-              </div>
-            </div>
+          {/* Left Side - Image */}
+          <div className="rounded-xl overflow-hidden shadow-lg animate-on-scroll h-full">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1683141426994-c7a753b5100a?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGFpbnQlMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D"
+              alt="Painter at Work"
+              className="w-full h-full object-cover"
+              style={{ minHeight: '400px' }}
+            />
           </div>
 
-          {/* Right Content - Features */}
-          <div className="animate-on-scroll">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
+          {/* Right Side - Title & Features vertically spaced */}
+          <div className="flex flex-col justify-center h-full animate-on-scroll max-w-xl mx-auto">
+            <h2 className="text-4xl font-extrabold text-gray-900 mb-10">
+              About <span className="text-sky-600">Majestic Painting</span>
+            </h2>
+
+            <div className="flex flex-col justify-between h-full space-y-8">
+              {features.map(({ icon: Icon, title, description }, idx) => (
                 <div
-                  key={index}
-                  className="bg-light-grey rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
+                  key={idx}
+                  className="flex items-center space-x-5 p-5 bg-sky-50 rounded-xl shadow hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="w-12 h-12 bg-blue-gradient rounded-lg flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-white" />
+                  <div className="bg-sky-600 p-3 rounded-lg flex items-center justify-center text-white">
+                    <Icon className="w-7 h-7" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+                    <p className="text-gray-700 text-sm">{description}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>
